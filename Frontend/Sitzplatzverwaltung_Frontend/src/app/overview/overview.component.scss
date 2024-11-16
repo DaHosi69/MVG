@@ -1,0 +1,177 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #A49299; /* Light greyish color for the background */
+  color: #333; /* Standard dark text */
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  background-color: #A32453; /* Bold red/pink for the header */
+  color: white;
+  padding: 1rem;
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Overview Container */
+.overview-container {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Konzertkarte */
+.concert-card {
+  background: #ffffff; /* White background for cards */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 4px solid #508E66; /* Green border for emphasis */
+}
+
+.concert-card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #A32453; /* Red/Pink for the concert name */
+}
+
+img{
+  height: 100px;
+  width: 200px;
+}
+
+.concert-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Fortschrittsanzeige */
+.progress-bar {
+  background: #EAEAEA; /* Light gray for the empty bar */
+  border-radius: 10px;
+  overflow: hidden;
+  height: 10px;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.progress-bar .progress {
+  background: #508E66; /* Green for progress bar */
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+  .overview-container {
+    padding: 1rem;
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+  }
+
+  .concert-card {
+    padding: 0.8rem;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #F9BC61;
+  overflow: hidden;
+  font-family: "Roboto";
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 250px;
+  background: linear-gradient(#F9BC61, #FDE8C9);
+  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+  border-radius: 8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 88%;
+  width: 88%;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.content > .top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 20%;
+  background-color: white;
+
+  p {
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .color {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: orange;
+  }
+}
+
+.content > .middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40%;
+  background: linear-gradient(#F9BC61, #FDE8C9 75%);
+  padding-left: 15px;
+  padding-right: 15px;
+
+  img {
+    width: 60%;
+  }
+
+  div > p:first-child {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  div > p:last-child {
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+.content > .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40%;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p:first-child {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, inject, output} from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule
-  ],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  router = inject(Router);
+  isLoggedIn = output<boolean>();
   email: string = "";
   password: string = "";
 
   onSubmit() {
-    // Logic for handling login
     console.log('Email:', this.email);
     console.log('Password:', this.password);
+    this.isLoggedIn.emit(true);
+    this.router.navigate(['/overview']);
   }
 }

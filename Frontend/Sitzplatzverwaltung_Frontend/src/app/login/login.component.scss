@@ -3,7 +3,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url('https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/464245137_8206037206190776_4454313134891699826_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=ZIIVm1hCVfQQ7kNvgHlWU17&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=ALKCqcT0o0deZYRwfA4CJoW&oh=00_AYD2U9H2mqLKumQzAT1uLIRUjuYL0QsYXCXzzCbUq62UWg&oe=6733C823');
+  background-image: url('../../../public/MVGGroup.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -69,33 +69,6 @@ input:valid ~ label {
   color: #fff;
   font-size: 1.2rem;
   top: 20px;
-}
-
-.forget {
-  margin: 35px 0;
-  font-size: 0.85rem;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-}
-
-.forget label {
-  display: flex;
-  align-items: center;
-}
-
-.forget label input {
-  margin-right: 3px;
-}
-
-.forget a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.forget a:hover {
-  text-decoration: underline;
 }
 
 button {

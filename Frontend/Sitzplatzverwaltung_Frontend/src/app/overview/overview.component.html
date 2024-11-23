@@ -1,6 +1,6 @@
 <div class="overview-container">
   <h1>Konzertübersicht</h1>
-  @for ( concert of concerts; track $index) {
+  @for ( concert of concerts; track $index ) {
     <div class="card">
       <div class="content">
         <div class="top">
@@ -8,24 +8,18 @@
           <div class="color"></div>
         </div>
         <div class="middle">
-          <div>
-            <p>#F9BC61</p>
-            <p>Charizard</p>
-          </div>
           <img src="Konzert.jpg" />
         </div>
         <div class="bottom">
           <div>
-            <p>Hue</p>
-            <p>36</p>
+            <p>Plätze</p>
+            <p>{{concert.totalSeats}}</p>
           </div>
           <div>
-            <p>Sat</p>
-            <p>93</p>
+            <p>Besetzt</p>
+            <p>{{concert.occupiedSeats}}</p>
           </div>
           <div>
-            <p>Lum</p>
-            <p>68</p>
           </div>
         </div>
       </div>

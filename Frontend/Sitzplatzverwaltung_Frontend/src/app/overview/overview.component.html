@@ -1,26 +1,17 @@
 <div class="overview-container">
-  <div class="head-container">
     <h1>Konzertübersicht</h1>
-  </div>
 <div class="card-container">
   @for ( concert of concerts; track $index ) {
-    <div class="card">
-      <div class="top">
-        <h2>{{ concert.name }}</h2>
-        <p>{{ concert.date }}</p>
-      </div>
-      <div class="middle">
-        <p>{{ concert.totalSeats }}</p>
-        <p>{{ concert.occupiedSeats }}</p>
-      </div>
-      <div class="bottom">
-
-      </div>
-    </div>
+    <app-card
+      [name]="concert.name"
+      [totalSeats]="concert.totalSeats"
+      [occupiedSeats]="concert.occupiedSeats"
+      [date]="concert.date"></app-card>
   }
   @empty {
     <p>Keine Konzerte verfügbar.</p>
   }
 </div>
 </div>
+
 

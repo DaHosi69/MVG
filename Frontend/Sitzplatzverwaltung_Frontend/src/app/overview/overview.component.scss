@@ -1,48 +1,29 @@
-.overview-container > .head-container{
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1vh;
-  margin-left:1vw;
+h1 {
   display: flex;
   align-self: flex-start;
-}
-
-h1{
+  font-weight: bold;
   font-size: 2rem;
-  color: #000;
   text-align: center;
+  background: linear-gradient(to right, #A71C51, #218546);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   margin-left: 1vh;
 }
 
 .overview-container{
   display: flex;
-  align-items: center;
   justify-content: flex-start;
-  background-color: #c4ffdb;
-  height: 100vh;
-}
-
-.middle{
-  display: flex;
-  flex-direction: row;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+  font-family: Inter, sans-serif;
+  height: 100%;
+  width: 100%;
 }
 
 .card-container{
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust columns dynamically */
-  gap: 20px; /* Add spacing between the grid items */
-  padding: 20px; /* Add padding inside the container */
-}
-
-card{
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  border: 1px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-left: 1vh;
 }

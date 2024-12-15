@@ -1,8 +1,9 @@
 <div class="overview-container">
-    <h1>Konzertübersicht</h1>
+  <app-sidebar></app-sidebar>
 <div class="card-container">
   @for ( concert of concerts; track $index ) {
     <app-card
+      [concertId]="concert.id"
       [name]="concert.name"
       [totalSeats]="concert.totalSeats"
       [occupiedSeats]="concert.occupiedSeats"

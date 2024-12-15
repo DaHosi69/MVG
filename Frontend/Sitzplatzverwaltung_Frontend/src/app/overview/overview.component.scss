@@ -17,13 +17,30 @@ h1 {
   font-family: Inter, sans-serif;
   height: 100%;
   width: 100%;
+  background: linear-gradient(-45deg, #9a0641, #490c22);
 }
 
 .card-container{
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
-  margin-left: 1vh;
+  margin: 4vh;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 80%;
+  background-color: white;
+  overflow: auto;
+}
+
+app-sidebar{
+  margin-right: 15vh;
+  transition: margin-right 0.3s ease-in-out;
+}
+
+app-sidebar:hover{
+  margin-right: 45vh;
 }

@@ -1,7 +1,189 @@
-.custom-card{
+.custom-card {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   background-color: white;
-  width: 30vh;
-  height: 35vh;
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  min-width: 36vh;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.top > h2 {
+  font-size: 1.5rem;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.display-prog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(-45deg, #218546, #16b54e);  border-radius: 10px;
+}
+
+.display-prog > span{
+  font-weight: bold;
+}
+
+.range-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.range-container > progress{
+border-radius: 50%;
+}
+
+.seat-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.bottom > .range-container{
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  gap: 0.5rem;
+}
+
+.bottom > .btnEdit {
+  background: linear-gradient(-45deg, #218546, #16b54e);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  height: 30px;
+  display: flex;
+}
+
+.bottom > .btnDelete {
+  background: linear-gradient(-45deg, #8f083a, #A71C51);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  height: 30px;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-card {
+    width: 80vw;
+    height: auto;
+  }
+
+  .top > h2 {
+    font-size: 1.2rem;
+  }
+
+  .middle {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bottom > .btnEdit,
+  .bottom > .btnDelete {
+    padding: 0.4rem;
+    height: auto;
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .custom-card {
+    width: 90%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .top > h2 {
+    font-size: 1.2rem;
+  }
+
+  .middle,
+  .bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bottom > .btnEdit,
+  .bottom > .btnDelete {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .custom-card {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .top > h2 {
+    font-size: 1rem;
+  }
+
+  .middle,
+  .bottom {
+    gap: 0.3rem;
+  }
+
+  .bottom > .btnEdit,
+  .bottom > .btnDelete {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .statusDiv > i {
+    width: 15px;
+    height: 15px;
+  }
 }

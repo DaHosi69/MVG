@@ -1,0 +1,32 @@
+<div class="custom-card">
+  <div class="top">
+    <h2>{{ name() }}</h2>
+    <p>{{ date() }}</p>
+  </div>
+  <div class="middle">
+    <div class="seat-container">
+      <div class="seatDesc">
+        <p>Plätze gesamt</p>
+        <p>Belegt</p>
+      </div>
+      <div class="seatNumbers">
+        <p>{{ totalSeats() }}</p>
+        <p>{{ occupiedSeats() }}</p>
+      </div>
+    </div>
+      <div class="range-container">
+        <div class="display-prog">
+          <span id="progress-value">Zu {{Math.floor((occupiedSeats()/totalSeats())*100)}}% verkauft</span>
+        </div>
+        <progress id="progress-bar" value="{{occupiedSeats()}}" max="{{totalSeats()}}"></progress>
+      </div>
+  </div>
+  <div class="bottom">
+    <button class="btnEdit">
+     <i class="fa fa-edit"></i>
+    </button>
+    <button class="btnDelete">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+</div>

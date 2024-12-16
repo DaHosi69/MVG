@@ -7,7 +7,9 @@
       [name]="concert.name"
       [totalSeats]="concert.totalSeats"
       [occupiedSeats]="concert.occupiedSeats"
-      [date]="concert.date"></app-card>
+      [date]="concert.date"
+      (deleteConcert)="deleteConcert($event)">
+    </app-card>
   }
   @empty {
     <p>Keine Konzerte verfügbar.</p>

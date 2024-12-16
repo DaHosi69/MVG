@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {of} from "rxjs";
 import {FormsModule} from "@angular/forms";
 import {Concert} from "../../models/Concert";
 import {CardComponent} from "../card/card.component";
 import {SidebarComponent} from "../sidebar/sidebar.component";
+import {SupabaseService} from "../../services/supabase.service";
 
 @Component({
   selector: 'app-overview',
@@ -13,10 +14,11 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
   styleUrl: './overview.component.scss'
 })
 export class OverviewComponent {
-  concerts : Concert[] = [
-    {id: 1, name: 'Wunschkonzert', date: '2024-11-20', totalSeats: 500, occupiedSeats: 350 },
-    {id: 2, name: 'OpenAir', date: '2024-11-25', totalSeats: 300, occupiedSeats: 200 },
-    {id: 3, name: 'Irgendans', date: '2024-12-01', totalSeats: 300, occupiedSeats: 20 },
-  ];
+  supabaseService = inject(SupabaseService);
+  concerts = this.supabaseService.getConcerts();
 
+  deleteConcert($event: number) {
+    let idx = this.concerts.findIndex(c => c.id === $event);
+    this.concerts.splice(idx, 1);
+  }
 }

@@ -1,12 +1,11 @@
 <div class="overview-container">
   <app-sidebar></app-sidebar>
 <div class="card-container">
-  @for ( concert of concerts; track $index ) {
+  @for ( concert of concerts(); track $index ) {
     <app-card
       [concertId]="concert.id"
       [name]="concert.name"
-      [totalSeats]="concert.totalSeats"
-      [occupiedSeats]="concert.occupiedSeats"
+      [totalSeats]="concert.total_seats"
       [date]="concert.date"
       (deleteConcert)="deleteConcert($event)">
     </app-card>

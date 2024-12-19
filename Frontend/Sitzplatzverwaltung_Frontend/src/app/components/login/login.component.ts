@@ -4,9 +4,9 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [FormsModule],
   templateUrl: './login.component.html',
+  standalone: true,
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {

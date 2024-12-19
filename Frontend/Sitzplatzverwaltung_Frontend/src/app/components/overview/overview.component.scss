@@ -1,13 +1,5 @@
-h1 {
-  display: flex;
-  align-self: flex-start;
-  font-weight: bold;
-  font-size: 2rem;
-  text-align: center;
-  background: linear-gradient(to right, #A71C51, #218546);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-   margin-left: 1vh;
+app-card{
+  height: 450px;
 }
 
 .overview-container{
@@ -17,7 +9,7 @@ h1 {
   font-family: Inter, sans-serif;
   height: 100%;
   width: 100%;
-  background: linear-gradient(-45deg, #9a0641, #490c22);
+  background: linear-gradient(-45deg, #830537, #420b1e);
 }
 
 .card-container{
@@ -39,7 +31,7 @@ h1 {
 
 ::-webkit-scrollbar {
   width: 8px;
-  display-inside: ruby-base-container;
+  display: ruby-base-container;
 }
 
 ::-webkit-scrollbar-thumb {

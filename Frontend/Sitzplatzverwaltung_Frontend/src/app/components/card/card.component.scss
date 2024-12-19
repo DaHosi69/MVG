@@ -8,13 +8,19 @@
   min-width: 36vh;
 }
 
+.delBtnContainer{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
 .top {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .top > h2 {
@@ -91,7 +97,27 @@ border-radius: 50%;
 }
 
 .bottom > .btnEdit {
-  background: linear-gradient(-45deg, #218546, #16b54e);
+  background-color: #218546;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 15px;
+  padding: 0 10px;
+}
+
+
+.bottom > .btnEdit:hover{
+  background-color: #289e53;
+  scale: 1.01;
+}
+
+.btnDelete {
+  background-color: #A71C51;
   color: white;
   border: none;
   border-radius: 50%;
@@ -100,14 +126,9 @@ border-radius: 50%;
   display: flex;
 }
 
-.bottom > .btnDelete {
-  background: linear-gradient(-45deg, #8f083a, #A71C51);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 0.5rem;
-  height: 30px;
-  display: flex;
+.btnDelete:hover{
+  background-color: #c62160;
+  scale: 1.01;
 }
 
 @media screen and (max-width: 768px) {

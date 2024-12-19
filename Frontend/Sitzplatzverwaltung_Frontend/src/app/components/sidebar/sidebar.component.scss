@@ -71,7 +71,7 @@
   background: linear-gradient(-45deg, #ae0846, #cd2263);
 }
 
-.left button:nth-of-type(1) {
+.left > button {
   background: var(--color-primary);
   color: #f9f9f9;
 }

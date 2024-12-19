@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from './../environments/environment';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,6 @@ export class SupabaseService {
 
   async addConcertWithSeats(name: string, date: string, rows: number, seatsPerRow: number) {
     try {
-      // Step 1: Insert a new concert
       const { data: concert, error: concertError } = await this.supabase
         .from('concerts')
         .insert([{ name, date, total_seats: rows * seatsPerRow }])
@@ -67,4 +67,19 @@ export class SupabaseService {
       throw error;
     }
   }
+
+  getOccupiedSeatsCount = async (concertId: number): Promise<number> => {
+    const { count, error } = await this.supabase
+      .from('seats')
+      .select('*', { count: 'exact', head: true })
+      .eq('concert_id', concertId)
+      .eq('is_occupied', true);
+  
+    if (error) {
+      console.error('Error fetching occupied seats count:', error);
+      return -1; 
+    }
+    return count ?? 0;
+  };
+  
 }

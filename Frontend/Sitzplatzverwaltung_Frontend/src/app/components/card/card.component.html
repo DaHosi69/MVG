@@ -1,4 +1,9 @@
 <div class="custom-card">
+  <div class="delBtnContainer">
+    <button class="btnDelete" (click)="deleteClick()">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
   <div class="top">
     <h2>{{ name() }}</h2>
     <p>{{ date() }}</p>
@@ -22,11 +27,8 @@
       </div>
   </div>
   <div class="bottom">
-    <button class="btnEdit">
-     <i class="fa fa-edit"></i>
-    </button>
-    <button class="btnDelete" (click)="deleteClick()">
-      <i class="fa fa-trash"></i>
+    <button class="btnEdit" (click)="viewSeats()">
+      <i class="fa fa-pencil"></i>Plätze Eintragen
     </button>
   </div>
 </div>

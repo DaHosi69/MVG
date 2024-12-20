@@ -2,12 +2,53 @@ import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from './../environments/environment';
 import {Observable} from "rxjs";
+import { SeatDto } from '../models/SeatDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupabaseService {
   private supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
+
+  async login(email: string, password: string): Promise<void> {
+    const { error } = await this.supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async logout(): Promise<void> {
+    const { error } = await this.supabase.auth.signOut();
+    if (error) {
+      throw new Error(error.message);
+    }
+  }
+  
+  async getCurrentUser() {
+    const { data, error } = await this.supabase.auth.getUser();
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data.user;
+  }
+  
+  async isAuthenticated(): Promise<boolean> {
+    const user = await this.getCurrentUser();
+    return !!user; 
+  }
+
+  async updateSeats(updatedSeats: SeatDto[]): Promise<void> {
+    const { data, error } = await this.supabase
+      .from('seats') 
+      .upsert(updatedSeats, { onConflict: 'id' }); 
+
+    if (error) {
+      console.error('Error updating seats:', error);
+      throw error;
+    }
+
+    console.log('Successfully updated Seats');
+  }
 
   async getSeats(concertId: number) {
     const { data, error } = await this.supabase

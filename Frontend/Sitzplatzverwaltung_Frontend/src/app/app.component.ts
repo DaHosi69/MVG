@@ -10,9 +10,4 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Sitzplatzverwaltung_Frontend';
-  isLoggedIn :boolean = false;
-
-  loggedIn($event: boolean) {
-    this.isLoggedIn = $event;
-  }
 }

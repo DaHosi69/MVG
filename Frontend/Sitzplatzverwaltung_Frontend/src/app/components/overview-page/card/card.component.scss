@@ -1,4 +1,7 @@
 .custom-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   background-color: white;
@@ -6,6 +9,8 @@
   height: auto;
   margin: 1rem;
   min-width: 36vh;
+  max-width: 36vh;
+  max-height: 60vh;
 }
 
 .delBtnContainer{
@@ -116,6 +121,10 @@ border-radius: 50%;
   scale: 1.01;
 }
 
+.botom > .btnEdit:active{
+  background-color: #49a56b;
+}
+
 .btnDelete {
   background-color: #A71C51;
   color: white;
@@ -129,6 +138,10 @@ border-radius: 50%;
 .btnDelete:hover{
   background-color: #c62160;
   scale: 1.01;
+}
+
+.btnDelete:active{
+  background-color: #cc3f75;
 }
 
 @media screen and (max-width: 768px) {

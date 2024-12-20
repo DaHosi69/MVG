@@ -1,8 +1,8 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {ConcertDto} from "../../../models/ConcertDto";
+import {ConcertDto} from "../../../../models/ConcertDto";
 import {SidebarComponent} from "../sidebar/sidebar.component";
-import {SupabaseService} from "../../../services/supabase.service";
+import {SupabaseService} from "../../../../services/supabase.service";
 import { CardComponent } from '../card/card.component';
 
 @Component({

@@ -1,11 +1,11 @@
+<app-navbar></app-navbar>
 <div class="reservierung-container">
-    <!-- Seating Area -->
     <div class="seating-area">
-      @for (row of seatRows; track row[0].row_number) {
+      @for (row of seatRows(); track row[0].row_number) {
         <div class="seat-row">
           <div class="row-display">{{ row[0].row_number }}</div>
           @for (seat of row; track seat.id) {
-            <app-seat [isReserved]="seat.is_occupied" [rowNumber]="seat.row_number" [seatNumber]="seat.seat_number"></app-seat>
+            <app-seat [seat]="seat" (seatChanged)="seatChanged($event)"></app-seat>
           }
           
           <div class="row-display">{{ row[0].row_number }}</div>
@@ -18,4 +18,4 @@
       <div><span class="legend-box selected"></span> Gewählte Sitze</div>
     </div>
   </div>
-  
+ 

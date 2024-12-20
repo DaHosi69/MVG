@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Router} from "@angular/router";
+import { SupabaseService } from '../../../../services/supabase.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,9 +10,11 @@ import {Router} from "@angular/router";
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-private router = inject(Router);
+router = inject(Router);
+supabaseService = inject(SupabaseService);
 
-  logout() {
-    this.router.navigate(['/login']);
+  async logout(): Promise<void> {
+    await this.supabaseService.logout();
+    this.router.navigate(['/login']); 
   }
 }

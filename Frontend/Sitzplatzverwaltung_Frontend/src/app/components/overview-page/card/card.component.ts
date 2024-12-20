@@ -1,5 +1,5 @@
 import {Component, computed, inject, input, numberAttribute, OnInit, output, signal} from '@angular/core';
-import { SupabaseService } from '../../../services/supabase.service';
+import { SupabaseService } from '../../../../services/supabase.service';
 import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
 

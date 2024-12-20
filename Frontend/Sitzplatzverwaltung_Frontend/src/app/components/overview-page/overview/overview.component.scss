@@ -15,15 +15,16 @@ app-card{
 .card-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content:start;
   flex-direction: row;
+  align-items: flex-start;
   gap: 1rem;
   padding: 2rem;
   border-radius: 1rem;
   margin: 4vh;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 5px 15px;
-  width: 80%;
+  width: 90%;
   background-color: white;
   overflow: auto;
   clip-path: inset(0 round 10px);
@@ -54,6 +55,3 @@ app-sidebar{
   transition: margin-right 0.3s ease-in-out;
 }
 
-app-sidebar:hover{
-  margin-right: 45vh;
-}

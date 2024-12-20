@@ -1,7 +1,9 @@
 .seat {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 5vw;
+    height: 5vw;
+    max-width: 30px;
+    max-height: 30px;
     border-radius: 3px;
     margin-right: 5px;
   }

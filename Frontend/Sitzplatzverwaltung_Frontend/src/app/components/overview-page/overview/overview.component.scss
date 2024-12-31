@@ -15,7 +15,7 @@ app-card{
 .card-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content:start;
+  justify-content:flex-start;
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
@@ -24,7 +24,7 @@ app-card{
   margin: 4vh;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 5px 15px;
-  width: 90%;
+  width: 85%;
   background-color: white;
   overflow: auto;
   clip-path: inset(0 round 10px);
@@ -51,7 +51,23 @@ app-card{
 }
 
 app-sidebar{
-  margin-right: 15vh;
+  margin-right: 120px;
   transition: margin-right 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  app-sidebar{
+    margin-right: 80px;
+  }
+
+  .card-container{
+    margin: 3vh;
+  }
+}
+
+@media (max-width: 480px) {
+  app-sidebar{
+    margin-right: 40px;
+  }
 }
 

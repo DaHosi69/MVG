@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login 1</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="login.component.scss" />
@@ -10,13 +9,13 @@
     <div class="login-card">
       <h2>Login</h2>
       @if(errorMessage){
-        <h3>{{errorMessage}}</h3>
+        <h3 style="color: red;">{{errorMessage}}</h3>
       } @else {
-      <h3>Melde dich an!</h3>
+        <h3>Melde dich an!</h3>
       }
       <form class="login-form">
         <input [(ngModel)]="email" name="E-mail" type="text" placeholder="E-mail" />
-        <input [(ngModel)]="password" name="Password" type="password" placeholder="Passwort" />
+        <input [(ngModel)]="password" name="Password" [type]="isPasswordVisible() ? 'text' : 'password'"  placeholder="Passwort" />
         <button (click)="login()">Login</button>
       </form>
     </div>

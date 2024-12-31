@@ -10,12 +10,13 @@ router = inject(Router);
 supabaseService = inject(SupabaseService);
 
   async canActivate(): Promise<boolean> {
-    const isAuthenticated = await this.supabaseService.isAuthenticated();
-    if (isAuthenticated) {
-      return true; 
-    } else {
-        this.router.navigate(['/login']); 
-      return false;
+    try {
+      const user = await this.supabaseService.getCurrentUser();
+      return !!user; 
+    } catch (error) {
+      console.error('AuthGuard: User is not authenticated. Redirecting to /login');
+      this.router.navigate(['/login']);
+      return false; 
     }
   }
 }

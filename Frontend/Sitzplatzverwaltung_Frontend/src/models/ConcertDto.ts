@@ -4,4 +4,5 @@ export interface ConcertDto
   name: string;
   date: string;
   total_seats: number;
+  seat_rows: number;
 }

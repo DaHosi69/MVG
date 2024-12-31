@@ -54,11 +54,11 @@
   margin-top: 18px;
 }
 
-.sidebar > .left > button:hover{
+.sidebar > .left > button:hover {
   background: linear-gradient(-45deg, #ae0846, #cd2263);
 }
 
-.sidebar > .left > button:active{
+.sidebar > .left > button:active {
   background: linear-gradient(-45deg, #ba3c6a, #c02c65);
 }
 
@@ -70,4 +70,54 @@
 .left button:last-of-type {
   margin-top: auto;
   margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px; 
+    left: 12px; 
+    top: 12px;
+    bottom: 12px;
+  }
+
+  .left {
+    width: 60px; 
+  }
+
+  .left button {
+    width: 36px; 
+    height: 36px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+  }
+
+  .sidebar > .left > button:hover {
+    background: linear-gradient(-45deg, #b60b4c, #d23669);
+  }
+
+  .sidebar > .left > button:active {
+    background: linear-gradient(-45deg, #c03b6b, #d64573);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px; 
+  }
+
+  .left {
+    width: 50px;
+  }
+
+  .left button {
+    width: 32px; 
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; 
+  }
+
+  .left button:last-of-type {
+    margin-bottom: 15px;
+  }
 }

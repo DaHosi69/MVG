@@ -83,7 +83,7 @@ body::after {
   margin: 0 0 12px;
 }
 
-.login-card > h3 {
+.login-card > h3, h3 {
   color: rgb(255 255 255 / 38%);
   margin: 0 0 48px;
   font-weight: 400;
@@ -144,4 +144,10 @@ body::after {
   text-align: left;
   text-decoration: none;
   margin-bottom: 30px;
+}
+
+.showPassword-container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }

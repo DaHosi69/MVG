@@ -1,7 +1,7 @@
-import {Component, computed, inject, input, numberAttribute, OnInit, output, signal} from '@angular/core';
+import {Component, inject, input, OnInit, output, signal} from '@angular/core';
 import { SupabaseService } from '../../../../services/supabase.service';
-import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { ConcertDto } from '../../../../models/ConcertDto';
 
 @Component({
   selector: 'app-card',
@@ -12,24 +12,21 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit{
   private router = inject(Router);
-  concertId = input.required<number>();
-  name = input.required<string>();
-  totalSeats = input.required<number>();
-  date = input.required<string>();
-  deleteConcert = output<number>();
+  concert = input.required<ConcertDto>();
+  concertToDelete = output<ConcertDto>();
   supabaseService = inject(SupabaseService);
   occupiedSeats = signal<number>(0);
   protected readonly Math = Math;
-  deleteClick(){
-    this.deleteConcert.emit(this.concertId());
-  }
+ 
   ngOnInit(): void {
     this.fetchOccupiedSeats();
   }
 
   async fetchOccupiedSeats() {
     try {
-      const count = await this.supabaseService.getOccupiedSeatsCount(this.concertId());
+      console.log(this.concert().id);
+      
+      const count = await this.supabaseService.getOccupiedSeatsCount(this.concert().id);
       this.occupiedSeats.set(Number(count) || 0);
     } catch (error) {
       console.error('Error fetching occupied seats:', error);
@@ -38,6 +35,10 @@ export class CardComponent implements OnInit{
   }
 
   viewSeats() {
-    this.router.navigateByUrl(`/reservations/${this.concertId()}`);
+    this.router.navigateByUrl(`/reservations/${this.concert().id}`);
+  }
+
+  updateConcertToDelete() {
+    this.concertToDelete.emit(this.concert());
   }
 }

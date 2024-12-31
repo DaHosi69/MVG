@@ -15,14 +15,23 @@ import { CardComponent } from '../card/card.component';
 export class OverviewComponent implements OnInit {
   supabaseService = inject(SupabaseService);
   concerts = signal<ConcertDto[]>([]);
+  concertToDelete = signal<ConcertDto>({id: 0,name:'',date:'',total_seats:0,seat_rows:0});
 
   ngOnInit() {
     this.supabaseService.getConcerts().then(x => this.concerts.set(x));
   }
-
-  deleteConcert($event: number) {
-
+  async deleteConcert(): Promise<void> {
+    try {
+        await this.supabaseService.deleteConcert(this.concertToDelete().id);
+        console.log('Concert deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting concert:', error);
+    }
+    window.location.reload();
   }
 
+  setConcertToDelete(concert: ConcertDto) {
+    this.concertToDelete.set(concert);
+  }
 
 }

@@ -16,25 +16,26 @@ export class LoginComponent {
   email = signal<string>("");
   password = signal<string>("");
   errorMessage: string | null = null;
+  isPasswordVisible = signal<boolean>(false);
 
   async login(): Promise<void> {
     try {
-      this.errorMessage = null; // Clear any previous error
+      this.errorMessage = null; 
       await this.supabaseService.login(this.email(), this.password());
-      console.log('Login successful!');
-      this.router.navigate(['/overview']); // Redirect after successful login
+      this.router.navigate(['/overview']); 
     } catch (error: any) {
-      // Access the `code` or `message` properties of the error object
       if (error.message === 'Invalid login credentials') {
         this.errorMessage = 'Falsche Email oder falsches Passwort!';
       } else if (error.message === 'missing email or phone') {
         this.errorMessage = 'Gib deine Email-Adresse und dein Passwort ein!';
       } else {
-        console.log(error.message);
-        
         this.errorMessage = 'OOOPS! Etwas scheint nicht zu funktionieren.';
       }
     }
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisible.set(!this.isPasswordVisible());
   }
   
 }

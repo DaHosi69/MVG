@@ -13,7 +13,7 @@
   max-height: 60vh;
 }
 
-.delBtnContainer{
+.delBtnContainer {
   display: flex;
   justify-content: flex-end;
   padding: 0.5rem;
@@ -41,7 +41,7 @@
   padding: 1rem;
 }
 
-.display-prog{
+.display-prog {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,14 +56,15 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background: linear-gradient(-45deg, #218546, #16b54e);  border-radius: 10px;
+  background: linear-gradient(-45deg, #218546, #16b54e);
+  border-radius: 10px;
 }
 
-.display-prog > span{
+.display-prog > span {
   font-weight: bold;
 }
 
-.range-container{
+.range-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,11 +73,11 @@ progress::-webkit-progress-value {
   width: 100%;
 }
 
-.range-container > progress{
-border-radius: 50%;
+.range-container > progress {
+  border-radius: 50%;
 }
 
-.seat-container{
+.seat-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -94,7 +95,7 @@ border-radius: 50%;
   padding: 1rem;
 }
 
-.bottom > .range-container{
+.bottom > .range-container {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
@@ -115,13 +116,20 @@ border-radius: 50%;
   padding: 0 10px;
 }
 
+.modal {
+  z-index: 1055 !important;
+}
 
-.bottom > .btnEdit:hover{
+.modal-backdrop {
+  z-index: 1050 !important;
+}
+
+.bottom > .btnEdit:hover {
   background-color: #289e53;
   scale: 1.01;
 }
 
-.botom > .btnEdit:active{
+.bottom > .btnEdit:active {
   background-color: #49a56b;
 }
 
@@ -135,89 +143,83 @@ border-radius: 50%;
   display: flex;
 }
 
-.btnDelete:hover{
+.btnDelete:hover {
   background-color: #c62160;
   scale: 1.01;
 }
 
-.btnDelete:active{
+.btnDelete:active {
   background-color: #cc3f75;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .custom-card {
-    width: 80vw;
-    height: auto;
+    min-width: 90%;
+    max-width: 90%;
+    max-height: none;
+    margin: 1rem auto;
   }
 
   .top > h2 {
     font-size: 1.2rem;
+    gap: 0;
   }
 
   .middle {
-    flex-direction: column;
     gap: 0.5rem;
+    padding: 0.5rem;
   }
 
-  .bottom {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bottom > .btnEdit,
-  .bottom > .btnDelete {
-    padding: 0.4rem;
-    height: auto;
+  .display-prog > span {
     font-size: 0.9rem;
   }
-}
-@media screen and (max-width: 768px) {
-  .custom-card {
-    width: 90%;
-    height: auto;
-    padding: 1rem;
+
+  .bottom > .btnEdit {
+    font-size: 13px;
+    height: 28px;
+    padding: 0 8px;
   }
 
-  .top > h2 {
-    font-size: 1.2rem;
-  }
-
-  .middle,
-  .bottom {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bottom > .btnEdit,
-  .bottom > .btnDelete {
+  .btnDelete {
+    height: 28px;
     padding: 0.4rem;
-    font-size: 0.9rem;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .custom-card {
-    width: 95%;
-    padding: 1rem;
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .top > h2 {
+    padding: 0;
     font-size: 1rem;
   }
 
-  .middle,
-  .bottom {
+  .middle {
     gap: 0.3rem;
+    padding: 0;
   }
 
-  .bottom > .btnEdit,
-  .bottom > .btnDelete {
-    padding: 0.3rem;
+  .display-prog > span {
     font-size: 0.8rem;
   }
 
-  .statusDiv > i {
-    width: 15px;
-    height: 15px;
+  .bottom > .btnEdit {
+    font-size: 12px;
+    height: 25px;
+    padding: 0 5px;
+  }
+
+  .btnDelete {
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+    padding: 0.3rem;
+  }
+
+  .seat-container{
+    padding: 0.7rem;
   }
 }

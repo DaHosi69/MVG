@@ -3,11 +3,8 @@
 <div class="card-container">
   @for ( concert of concerts(); track $index ) {
     <app-card
-      [concertId]="concert.id"
-      [name]="concert.name"
-      [totalSeats]="concert.total_seats"
-      [date]="concert.date"
-      (deleteConcert)="deleteConcert($event)">
+      [concert]="concert"
+      (concertToDelete)="setConcertToDelete($event)">
     </app-card>
   }
   @empty {
@@ -16,4 +13,22 @@
 </div>
 </div>
 
+<div class="modal fade" id="delConcertModal" tabindex="-1" aria-labelledby="delConcertLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delConcertLabel">Konzert Löschen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Sind Sie sicher, dass Sie das Konzert <strong>{{concertToDelete().name}}</strong> löschen möchten?</p>
+        <p class="text-danger">Diese Aktion kann nicht rückgängig gemacht werden.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteConcert()" >Konzert Löschen</button>
+      </div>
+    </div>
+  </div>
+</div>
 

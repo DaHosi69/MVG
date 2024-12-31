@@ -74,41 +74,58 @@ export class SupabaseService {
     return data;
   }
 
-  async addConcertWithSeats(name: string, date: string, rows: number, seatsPerRow: number) {
+  async createConcertWithSeats(
+    name: string,
+    date: string,
+    totalSeats: number,
+    seatRows: number
+  ): Promise<void> {
     try {
       const { data: concert, error: concertError } = await this.supabase
         .from('concerts')
-        .insert([{ name, date, total_seats: rows * seatsPerRow }])
-        .select()
-        .single();
-
-      if (concertError) throw concertError;
-
+        .insert([
+          {
+            name: name,
+            date: date,
+            total_seats: totalSeats,
+            seat_rows: seatRows,
+          },
+        ])
+        .select(); 
+  
+      if (concertError || !concert || concert.length === 0) {
+        console.error('Error creating concert:', concertError?.message);
+        throw new Error(concertError?.message || 'Unable to create concert.');
+      }
+  
+      const concertId = concert[0].id; 
+  
       const seats = [];
-      for (let row = 1; row <= rows; row++) {
-        for (let seat = 1; seat <= seatsPerRow; seat++) {
+      const seatsPerRow = Math.ceil(totalSeats / seatRows);
+      for (let row = 1; row <= seatRows; row++) {
+        for (let seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++) {
           seats.push({
-            concert_id: concert.id,
+            concert_id: concertId,
             row_number: row,
-            seat_number: seat,
+            seat_number: seatNumber,
             is_occupied: false,
           });
         }
       }
-
+  
       const { error: seatError } = await this.supabase.from('seats').insert(seats);
-      if (seatError) throw seatError;
-
-      return {
-        concert,
-        totalSeats: seats.length,
-      };
+  
+      if (seatError) {
+        console.error('Error creating seats:', seatError.message);
+        throw new Error(seatError.message);
+      }
+  
+      console.log('Concert and seats created successfully!');
     } catch (error) {
-      console.error('Error adding concert with seats:', error);
-      throw error;
+      console.error('Unexpected error:', error);
     }
   }
-
+  
   getOccupiedSeatsCount = async (concertId: number): Promise<number> => {
     const { count, error } = await this.supabase
       .from('seats')
@@ -122,5 +139,34 @@ export class SupabaseService {
     }
     return count ?? 0;
   };
+
+  async deleteConcert(concertId: number): Promise<void> {
+    try {
+      const { error: seatError } = await this.supabase
+        .from('seats')
+        .delete()
+        .eq('concert_id', concertId);
+  
+      if (seatError) {
+        console.error('Error deleting seats:', seatError.message);
+        throw new Error(seatError.message);
+      }
+  
+      const { error: concertError } = await this.supabase
+        .from('concerts')
+        .delete()
+        .eq('id', concertId);
+  
+      if (concertError) {
+        console.error('Error deleting concert:', concertError.message);
+        throw new Error(concertError.message);
+      }
+  
+      console.log(`Concert with ID ${concertId} deleted successfully!`);
+    } catch (error) {
+      console.error('Unexpected error:', error);
+    }
+  }
+  
   
 }

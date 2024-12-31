@@ -1,12 +1,12 @@
 <div class="custom-card">
   <div class="delBtnContainer">
-    <button class="btnDelete" (click)="deleteClick()">
+    <button type="button" class="btnDelete" (click)="updateConcertToDelete()" data-bs-toggle="modal" data-bs-target="#delConcertModal">
       <i class="fa fa-trash"></i>
     </button>
   </div>
   <div class="top">
-    <h2>{{ name() }}</h2>
-    <p>{{ date() }}</p>
+    <h2>{{ concert().name }}</h2>
+    <p>{{ concert().date }}</p>
   </div>
   <div class="middle">
     <div class="seat-container">
@@ -15,15 +15,15 @@
         <p>Belegt</p>
       </div>
       <div class="seatNumbers">
-        <p>{{ totalSeats() }}</p>
+        <p>{{ concert().total_seats }}</p>
         <p>{{ occupiedSeats() }}</p>
       </div>
     </div>
       <div class="range-container">
         <div class="display-prog">
-          <span id="progress-value">Zu {{Math.floor((occupiedSeats()/totalSeats())*100)}}% verkauft</span>
+          <span id="progress-value">Zu {{Math.floor((occupiedSeats()/concert().total_seats)*100)}}% verkauft</span>
         </div>
-        <progress id="progress-bar" value="{{occupiedSeats()}}" max="{{totalSeats()}}"></progress>
+        <progress id="progress-bar" value="{{occupiedSeats()}}" max="{{concert().total_seats}}"></progress>
       </div>
   </div>
   <div class="bottom">
@@ -32,3 +32,4 @@
     </button>
   </div>
 </div>
+

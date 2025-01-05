@@ -4,11 +4,12 @@ import {OverviewComponent} from "./components/overview-page/overview/overview.co
 import { ReservationsComponent } from './components/reservation-page/reservations/reservations.component';
 import { reservationsResolver } from './components/reservation-page/resolvers/reservations.resolver';
 import { AuthGuard } from '../services/auth.guard';
+import { WrongPathComponent } from './components/wrong-path/wrong-path.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'overview', component: OverviewComponent, canActivate: [AuthGuard]},
   {path: 'reservations/:id', component: ReservationsComponent, resolve: { seats: reservationsResolver }, canActivate: [AuthGuard] },
-  {path: '**', redirectTo: 'login'}
+  {path: '**', component: WrongPathComponent}
 ];

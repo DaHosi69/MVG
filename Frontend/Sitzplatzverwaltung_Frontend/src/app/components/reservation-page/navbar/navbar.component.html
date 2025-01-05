@@ -1,38 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">MVG</a>
+    <a class="navbar-brand" href="/"><img src="MVG.png" height="40px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/overview">Overview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/reservations">Reservations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/features">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pricing">Pricing</a>
+          <a class="nav-link" href="/overview">Überblick</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
+            <i class="fa fa-user"></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Mein Profil</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            <li><a class="dropdown-item" href="/logout">Ausloggen</a></li>
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search Reservations" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

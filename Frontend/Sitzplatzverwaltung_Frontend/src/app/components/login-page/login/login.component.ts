@@ -1,6 +1,6 @@
-import {Component, inject, output, signal} from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import {Router} from "@angular/router";
+import { Component, inject, output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SupabaseService } from '../../../../services/supabase.service';
 
 @Component({
@@ -8,21 +8,21 @@ import { SupabaseService } from '../../../../services/supabase.service';
   imports: [FormsModule],
   templateUrl: './login.component.html',
   standalone: true,
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
   supabaseService = inject(SupabaseService);
   router = inject(Router);
-  email = signal<string>("");
-  password = signal<string>("");
+  email = signal<string>('');
+  password = signal<string>('');
   errorMessage: string | null = null;
   isPasswordVisible = signal<boolean>(false);
 
   async login(): Promise<void> {
     try {
-      this.errorMessage = null; 
+      this.errorMessage = null;
       await this.supabaseService.login(this.email(), this.password());
-      this.router.navigate(['/overview']); 
+      this.router.navigate(['/overview']);
     } catch (error: any) {
       if (error.message === 'Invalid login credentials') {
         this.errorMessage = 'Falsche Email oder falsches Passwort!';
@@ -37,5 +37,4 @@ export class LoginComponent {
   togglePasswordVisibility() {
     this.isPasswordVisible.set(!this.isPasswordVisible());
   }
-  
 }

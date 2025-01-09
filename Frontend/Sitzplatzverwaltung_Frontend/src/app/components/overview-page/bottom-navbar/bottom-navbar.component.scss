@@ -1,0 +1,47 @@
+/* Bottom Navbar Container */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(to bottom, #e80074, #d1004b);
+  padding: 10px 0;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button {
+  background: linear-gradient(-45deg, #8f083a, #a71c51);
+  border: 0;
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  width: 40px;
+  height: 40px;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.icon-user::before {
+  font-size: 20px;
+}
+
+.icon-add::before {
+  font-size: 20px;
+}
+
+.icon-group::before {
+  font-size: 20px;
+}
+
+.icon-back::before {
+  font-size: 20px;
+}

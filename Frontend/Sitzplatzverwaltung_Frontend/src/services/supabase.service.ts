@@ -3,12 +3,26 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from './../environments/environment';
 import {Observable} from "rxjs";
 import { SeatDto } from '../models/SeatDto';
+import { UserDto } from '../models/UserDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupabaseService {
   private supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
+  currentUser: UserDto | null = null;
+  constructor() {
+    this.loadCurrentUser();
+  }
+
+  private async loadCurrentUser(): Promise<void> {
+    const { data, error } = await this.supabase.auth.getUser();
+    if (!error && data.user) {
+      this.currentUser = data.user as UserDto;
+    } else {
+      this.currentUser = null;
+    }
+  }
 
   async login(email: string, password: string): Promise<void> {
     const { error } = await this.supabase.auth.signInWithPassword({ email, password });

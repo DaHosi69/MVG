@@ -1,34 +1,63 @@
 <div class="overview-container">
+  @if (!isSmartphone()) {
   <app-sidebar></app-sidebar>
-<div class="card-container">
-  @for ( concert of concerts(); track $index ) {
+  }
+  <div class="card-container">
+    @for ( concert of concerts(); track $index ) {
     <app-card
       [concert]="concert"
-      (concertToDelete)="setConcertToDelete($event)">
+      (concertToDelete)="setConcertToDelete($event)"
+    >
     </app-card>
-  }
-  @empty {
+    } @empty {
     <p>Keine Konzerte verfügbar.</p>
+    }
+  </div>
+  @if (isSmartphone()) {
+    <app-bottom-navbar></app-bottom-navbar>
   }
-</div>
 </div>
 
-<div class="modal fade" id="delConcertModal" tabindex="-1" aria-labelledby="delConcertLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="delConcertModal"
+  tabindex="-1"
+  aria-labelledby="delConcertLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="delConcertLabel">Konzert Löschen</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        <p>Sind Sie sicher, dass Sie das Konzert <strong>{{concertToDelete().name}}</strong> löschen möchten?</p>
-        <p class="text-danger">Diese Aktion kann nicht rückgängig gemacht werden.</p>
+        <p>
+          Sind Sie sicher, dass Sie das Konzert
+          <strong>{{ concertToDelete().name }}</strong> löschen möchten?
+        </p>
+        <p class="text-danger">
+          Diese Aktion kann nicht rückgängig gemacht werden.
+        </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteConcert()" >Konzert Löschen</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Abbrechen
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="deleteConcert()"
+        >
+          Konzert Löschen
+        </button>
       </div>
     </div>
   </div>
 </div>
-

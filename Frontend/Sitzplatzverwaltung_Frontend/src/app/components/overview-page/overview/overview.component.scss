@@ -1,8 +1,8 @@
-app-card{
+app-card {
   height: 450px;
 }
 
-.overview-container{
+.overview-container {
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
@@ -12,10 +12,10 @@ app-card{
   background: linear-gradient(-45deg, #830537, #420b1e);
 }
 
-.card-container{
+.card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
@@ -25,7 +25,7 @@ app-card{
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 5px 15px;
   width: 85%;
-  background-color: white;
+  background-color: rgb(243, 238, 238);
   overflow: auto;
   clip-path: inset(0 round 10px);
 }
@@ -50,24 +50,45 @@ app-card{
   background: linear-gradient(180deg, #388e3c, #66bb6a);
 }
 
-app-sidebar{
+app-sidebar {
   margin-right: 120px;
   transition: margin-right 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
-  app-sidebar{
+  app-sidebar {
     margin-right: 80px;
   }
 
-  .card-container{
+  .card-container {
     margin: 3vh;
   }
 }
 
 @media (max-width: 480px) {
-  app-sidebar{
-    margin-right: 40px;
+  .overview-container {
+    justify-content: flex-start;
+    gap: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container{
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 1rem;
+    margin: 2vh;
+    height: 86vh;
+    width: 90%;
+  }
+
+  app-card{
+    height: 65vh;
+  }
+  app-bottom-navbar{
+    width: 100%;
   }
 }
-

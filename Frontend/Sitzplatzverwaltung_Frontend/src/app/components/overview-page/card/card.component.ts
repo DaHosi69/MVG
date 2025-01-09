@@ -2,10 +2,11 @@ import {Component, inject, input, OnInit, output, signal} from '@angular/core';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { Router } from '@angular/router';
 import { ConcertDto } from '../../../../models/ConcertDto';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './card.component.html',
   standalone: true,
   styleUrl: './card.component.scss'
@@ -22,10 +23,13 @@ export class CardComponent implements OnInit{
     this.fetchOccupiedSeats();
   }
 
+  getDayOfWeek(date: string): string{
+    const weekday = new Date(date).toLocaleDateString("de-AT", { weekday: "long" });
+    return weekday;
+  }
+
   async fetchOccupiedSeats() {
     try {
-      console.log(this.concert().id);
-      
       const count = await this.supabaseService.getOccupiedSeatsCount(this.concert().id);
       this.occupiedSeats.set(Number(count) || 0);
     } catch (error) {

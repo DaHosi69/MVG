@@ -1,12 +1,19 @@
 <div class="custom-card">
   <div class="delBtnContainer">
-    <button type="button" class="btnDelete" (click)="updateConcertToDelete()" data-bs-toggle="modal" data-bs-target="#delConcertModal">
+    <button
+      type="button"
+      class="btnDelete"
+      (click)="updateConcertToDelete()"
+      data-bs-toggle="modal"
+      data-bs-target="#delConcertModal"
+    >
       <i class="fa fa-trash"></i>
     </button>
   </div>
   <div class="top">
     <h2>{{ concert().name }}</h2>
-    <p>{{ concert().date }}</p>
+    <p>{{ concert().date | date:'dd.MM.YY'}}</p>
+    <p>{{ getDayOfWeek(concert().date) }}</p>
   </div>
   <div class="middle">
     <div class="seat-container">
@@ -19,17 +26,23 @@
         <p>{{ occupiedSeats() }}</p>
       </div>
     </div>
-      <div class="range-container">
-        <div class="display-prog">
-          <span id="progress-value">Zu {{Math.floor((occupiedSeats()/concert().total_seats)*100)}}% verkauft</span>
-        </div>
-        <progress id="progress-bar" value="{{occupiedSeats()}}" max="{{concert().total_seats}}"></progress>
+    <div class="range-container">
+      <div class="display-prog">
+        <span id="progress-value"
+          >Zu {{ Math.floor((occupiedSeats() / concert().total_seats) * 100) }}%
+          verkauft</span
+        >
       </div>
+      <progress
+        id="progress-bar"
+        value="{{ occupiedSeats() }}"
+        max="{{ concert().total_seats }}"
+      ></progress>
+    </div>
   </div>
   <div class="bottom">
     <button class="btnEdit" (click)="viewSeats()">
-      <i class="fa fa-pencil"></i>Plätze Eintragen
+      <i class="fa fa-pencil"></i>Platzauswahl
     </button>
   </div>
 </div>
-

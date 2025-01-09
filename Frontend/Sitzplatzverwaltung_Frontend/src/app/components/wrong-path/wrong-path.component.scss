@@ -1,0 +1,23 @@
+.container{
+   height: 100%;
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 70px;
+    color: rgb(33, 31, 31);
+}
+h2{
+    font-size: 40px;
+    color: rgb(35, 33, 33);
+}

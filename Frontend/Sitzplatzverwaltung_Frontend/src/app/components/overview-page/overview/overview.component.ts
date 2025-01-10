@@ -28,7 +28,7 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {
     this.supabaseService.getConcerts().then((x) => this.concerts.set(x));
     this.isSmartphone.set(window.innerWidth <= 480);
-    console.log(this.supabaseService.currentUser?.role);
+    console.log(this.supabaseService.currentUser?.user_metadata.role);
     
   }
 

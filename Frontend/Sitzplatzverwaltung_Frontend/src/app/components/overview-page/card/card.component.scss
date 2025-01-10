@@ -1,114 +1,122 @@
 .custom-card {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  flex-grow: 1;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   background-color: white;
   width: auto;
-  height: 62vh;
-  margin: 1rem;
-  min-width: 36vh;
-  max-width: 36vh;
-  max-height: 65vh;
+  height: auto;
+  margin: 10px;
+  width: 36vh;
 }
 
-.delBtnContainer {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.5rem;
+.card-heading{
+  position: absolute;
+  top: 10px; 
+  left: 10px; 
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 16px;
 }
 
 .top {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-}
-
-.top > h2 {
-  font-size: 1.5rem;
-}
-
-.top > p{
-  margin: 0;
+  padding-left: 1rem;
   gap: 0;
+  padding: 0.5rem 1rem 0 1rem;
+}
+
+.btnDelete {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  background-color: #a71c51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 30px;
 }
 
 .middle {
   display: flex;
+  justify-content: left;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
+  align-items: left;
+  margin-top: 65px;
+  gap: 0;
+  padding: 0 1rem 1rem 1rem;
+  width: 100%;
 }
 
-.display-prog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  background-color: whitesmoke;
-  border-radius: 5px;
+.range-container > span {
+  font-size: 14px;
+  flex-direction: row;
+  margin-top: 8px;
 }
 
-progress::-webkit-progress-bar {
+.range-container > progress {
+  margin-top: 10px;
+}
+
+progress {
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
   background-color: #e0e0e0;
-  border-radius: 10px;
+  overflow: hidden;
 }
 
-progress::-webkit-progress-value {
-  background: linear-gradient(-45deg, #218546, #16b54e);
+progress::-moz-progress-bar,
+progress::-ms-fill {
+  background: #218546;
   border-radius: 10px;
-}
-
-.display-prog > span {
-  font-weight: bold;
 }
 
 .range-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.range-container > progress {
-  border-radius: 50%;
+  flex-direction: row;
+  gap: 0.3rem;
 }
 
 .seat-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
   gap: 1rem;
-  padding: 1rem;
+}
+
+.seatDesc > p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.seatNumbers > p {
+  font-size: 14px;
+  margin: 0;
 }
 
 .bottom {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.bottom > .range-container {
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-  gap: 0.5rem;
+  justify-content: left;
+  padding: 0 1rem 1rem 1rem;
+  margin-right: 6vw;
+  width: 100%;
 }
 
 .bottom > .btnEdit {
   background-color: #218546;
+  gap: 0.5rem;
   color: white;
   border: none;
   border-radius: 10px;
@@ -116,22 +124,14 @@ progress::-webkit-progress-value {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
   font-size: 15px;
   padding: 0 10px;
-}
-
-.modal {
-  z-index: 1055 !important;
-}
-
-.modal-backdrop {
-  z-index: 1050 !important;
+  width: 100%;
+  cursor: pointer;
 }
 
 .bottom > .btnEdit:hover {
   background-color: #289e53;
-  scale: 1.01;
 }
 
 .bottom > .btnEdit:active {
@@ -143,14 +143,14 @@ progress::-webkit-progress-value {
   color: white;
   border: none;
   border-radius: 50%;
-  padding: 0.5rem;
   height: 30px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btnDelete:hover {
   background-color: #c62160;
-  scale: 1.01;
 }
 
 .btnDelete:active {
@@ -161,18 +161,11 @@ progress::-webkit-progress-value {
   .custom-card {
     min-width: 90%;
     max-width: 90%;
-    max-height: none;
     margin: 1rem auto;
-  }
-
-  .top > h2 {
-    font-size: 1.2rem;
-    gap: 0;
   }
 
   .middle {
     gap: 0.5rem;
-    padding: 0.5rem;
   }
 
   .display-prog > span {
@@ -181,48 +174,36 @@ progress::-webkit-progress-value {
 
   .bottom > .btnEdit {
     font-size: 13px;
-    height: 28px;
-    padding: 0 8px;
   }
 
   .btnDelete {
     height: 28px;
-    padding: 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
   .custom-card {
-    min-width: 100%;
-    width: 40vh;
-    height: 61vh;
+    width: 50vh;
+    height: auto;
   }
 
   .top > h2 {
-    padding: 0;
     font-size: 1rem;
   }
 
   .middle {
     gap: 0.3rem;
-    padding: 0;
   }
 
   .display-prog > span {
     font-size: 0.8rem;
   }
 
-  .bottom > .btnEdit {
-    font-size: 12px;
-    height: 25px;
-    padding: 0 5px;
-  }
-
   .btnDelete {
     height: 30px;
     width: 30px;
     font-size: 15px;
-    padding: 0.5rem;
+    width: 30px;
   }
 
   .seat-container {

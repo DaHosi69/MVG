@@ -17,11 +17,12 @@ private activatedRoute = inject(ActivatedRoute);
 seats = signal<SeatDto[]>([]);
 seatRows = signal<SeatDto[][]>([]);
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.activatedRoute.data.subscribe((data) => {
       this.seats.set(data['seats'] || []);
     });
     this.seatRows.set(this.groupSeatsByRow());
+    await this.supabaseService.loadCurrentUser();
   }
 
   groupSeatsByRow(): SeatDto[][] {

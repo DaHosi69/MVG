@@ -157,6 +157,32 @@ progress::-ms-fill {
   background-color: #cc3f75;
 }
 
+.btnInfo{
+  background-color: #116ed9;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 30px;
+}
+
+.btnInfo:hover{
+  background-color: #418ce3;
+}
+
+.btnInfo:active{
+  background-color: #70a8e8;
+}
+
 @media (max-width: 768px) {
   .custom-card {
     min-width: 90%;
@@ -176,7 +202,7 @@ progress::-ms-fill {
     font-size: 13px;
   }
 
-  .btnDelete {
+  .btnDelete, .btnInfo {
     height: 28px;
   }
 }
@@ -199,7 +225,7 @@ progress::-ms-fill {
     font-size: 0.8rem;
   }
 
-  .btnDelete {
+  .btnDelete, .btnInfo {
     height: 30px;
     width: 30px;
     font-size: 15px;

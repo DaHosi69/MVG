@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { toSignal } from '@angular/core/rxjs-interop'
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],

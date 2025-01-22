@@ -11,14 +11,13 @@ import { UserDto } from '../models/UserDto';
 export class SupabaseService {
   private supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
   currentUser: UserDto | null = null;
-  constructor() {
-    this.loadCurrentUser();
-  }
 
-  private async loadCurrentUser(): Promise<void> {
+   async loadCurrentUser(): Promise<void> {
     const { data, error } = await this.supabase.auth.getUser();
     if (!error && data.user) {
       this.currentUser = data.user as UserDto;
+      console.log(data.user);
+      
     } else {
       this.currentUser = null;
     }
@@ -29,6 +28,7 @@ export class SupabaseService {
     if (error) {
       throw new Error(error.message);
     }
+    this.loadCurrentUser();
   }
 
   async logout(): Promise<void> {

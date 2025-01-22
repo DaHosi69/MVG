@@ -6,11 +6,13 @@
     @for ( concert of concerts(); track $index ) {
     <app-card
       [concert]="concert"
+      [role]="role()!.user_metadata!.role"
       (concertToDelete)="setConcertToDelete($event)"
+
     >
     </app-card>
     } @empty {
-    <p>Keine Konzerte verfügbar.</p>
+    <p>Keine Konzerte verfügbar</p>
     }
   </div>
   @if (isSmartphone()) {

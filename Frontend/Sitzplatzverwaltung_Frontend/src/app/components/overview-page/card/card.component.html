@@ -7,6 +7,7 @@
         {{ "(" + getDayOfWeek(concert().date) + ")" }}
       </p>
     </div>
+    @if (role() === 'mvg_admin') {
     <div>
       <button
         type="button"
@@ -18,6 +19,18 @@
         <i class="fa fa-trash"></i>
       </button>
     </div>
+  } @else {
+    <div>
+      <button
+        type="button"
+        class="btnInfo"
+        data-bs-toggle="modal"
+        data-bs-target="#infConcertModal"
+      >
+      <i class="fa-solid fa-info"></i>
+      </button>
+    </div>
+  }
   </div>
   <div class="middle">
     <div class="seat-container">

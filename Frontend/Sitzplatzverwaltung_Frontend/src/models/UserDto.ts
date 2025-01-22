@@ -9,9 +9,9 @@ export interface Identity {
       sub: string;
     };
     provider: string;
-    last_sign_in_at: string; // ISO string for date-time
-    created_at: string; // ISO string for date-time
-    updated_at: string; // ISO string for date-time
+    last_sign_in_at: string; 
+    created_at: string;
+    updated_at: string; 
     email: string;
   }
   

@@ -1,8 +1,12 @@
-import {Component, inject, input, OnInit, output, signal} from '@angular/core';
+import {Component, computed, effect, inject, input, OnInit, output, Signal, signal} from '@angular/core';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { Router } from '@angular/router';
 import { ConcertDto } from '../../../../models/ConcertDto';
 import { DatePipe } from '@angular/common';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop'
+import { Observable, Subscription, from } from 'rxjs';
+import { UserDto } from '../../../../models/UserDto';
+import { computedAsync } from '../../../shared/angular-extension';
 
 @Component({
   selector: 'app-card',
@@ -18,11 +22,12 @@ export class CardComponent implements OnInit{
   supabaseService = inject(SupabaseService);
   occupiedSeats = signal<number>(0);
   protected readonly Math = Math;
+  role = input.required<string>();
  
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.fetchOccupiedSeats();
   }
-
+  
   getDayOfWeek(date: string): string{
     const weekday = new Date(date).toLocaleDateString("de-AT", { weekday: "long" });
     return weekday;

@@ -5,6 +5,9 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { CardComponent } from '../card/card.component';
 import { BottomNavbarComponent } from "../bottom-navbar/bottom-navbar.component";
+import { computedAsync } from '../../../shared/angular-extension';
+import { from, Observable } from 'rxjs';
+import { UserDto } from '../../../../models/UserDto';
 
 @Component({
   selector: 'app-overview',
@@ -24,12 +27,13 @@ export class OverviewComponent implements OnInit {
     seat_rows: 0,
   });
   isSmartphone = signal(false);
-
-  ngOnInit() {
+  role = computedAsync( () => from(this.supabaseService.getCurrentUser()) as Observable<UserDto>);
+ 
+  async ngOnInit(): Promise<void> {
     this.supabaseService.getConcerts().then((x) => this.concerts.set(x));
     this.isSmartphone.set(window.innerWidth <= 480);
+    await this.supabaseService.loadCurrentUser();
     console.log(this.supabaseService.currentUser?.user_metadata.role);
-    
   }
 
 

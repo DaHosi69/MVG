@@ -19,13 +19,8 @@ import { UserDto } from '../../../../models/UserDto';
 export class OverviewComponent implements OnInit {
   supabaseService = inject(SupabaseService);
   concerts = signal<ConcertDto[]>([]);
-  concertToDelete = signal<ConcertDto>({
-    id: 0,
-    name: '',
-    date: '',
-    total_seats: 0,
-    seat_rows: 0,
-  });
+  concertToDelete = signal<ConcertDto | null>(null);
+  concertInfo = signal<ConcertDto | null>(null);
   isSmartphone = signal(false);
   role = computedAsync( () => from(this.supabaseService.getCurrentUser()) as Observable<UserDto>);
  
@@ -36,14 +31,13 @@ export class OverviewComponent implements OnInit {
     console.log(this.supabaseService.currentUser?.user_metadata.role);
   }
 
-
   isAdmin(): boolean {
     return false;
   }
 
   async deleteConcert(): Promise<void> {
     try {
-      await this.supabaseService.deleteConcert(this.concertToDelete().id);
+      await this.supabaseService.deleteConcert(this.concertToDelete()!.id);
       console.log('Concert deleted successfully!');
     } catch (error) {
       console.error('Error deleting concert:', error);
@@ -53,5 +47,10 @@ export class OverviewComponent implements OnInit {
 
   setConcertToDelete(concert: ConcertDto) {
     this.concertToDelete.set(concert);
+  }
+
+  setConcertInfo(concert: ConcertDto){
+    this.concertInfo.set(concert);
+    console.log('in SetConcertInfo');
   }
 }

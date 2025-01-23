@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   border-radius: 10px;
   background-color: white;
   width: auto;
@@ -19,12 +19,14 @@
 }
 
 h3 {
+  margin-left: 5px;
   font-size: 20px;
   font-weight: 600;
 }
 
 p {
   font-size: 16px;
+  margin-left: 5px;
 }
 
 .top {
@@ -212,7 +214,13 @@ progress::-ms-fill {
     width: 50vh;
     height: auto;
   }
-
+  h3 {
+    margin-left: 15px;
+  }
+  
+  p {
+    margin-left: 15px;
+  }
   .top > h2 {
     font-size: 1rem;
   }

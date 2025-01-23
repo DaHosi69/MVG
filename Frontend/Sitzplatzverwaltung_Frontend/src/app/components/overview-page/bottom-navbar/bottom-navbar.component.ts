@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ addConcertDate = signal<string>('');
 addTotalSeats = signal<number>(1);
 addSeatRows = signal<number>(1);
 isInputValid = signal<boolean>(false);
+role = input.required<string>();
 
   async logout(): Promise<void> {
     await this.supabaseService.logout();

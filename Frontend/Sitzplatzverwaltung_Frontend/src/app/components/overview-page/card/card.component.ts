@@ -19,6 +19,7 @@ export class CardComponent implements OnInit{
   private router = inject(Router);
   concert = input.required<ConcertDto>();
   concertToDelete = output<ConcertDto>();
+  concertInfo = output<ConcertDto>();
   supabaseService = inject(SupabaseService);
   occupiedSeats = signal<number>(0);
   protected readonly Math = Math;
@@ -49,5 +50,9 @@ export class CardComponent implements OnInit{
 
   updateConcertToDelete() {
     this.concertToDelete.emit(this.concert());
+  }
+
+  updateConcertInfo(){
+    this.concertInfo.emit(this.concert());
   }
 }

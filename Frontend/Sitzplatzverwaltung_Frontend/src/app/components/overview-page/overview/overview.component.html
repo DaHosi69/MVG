@@ -1,0 +1,100 @@
+<div class="overview-container">
+  @if (!isSmartphone() && role()?.user_metadata?.role) {
+  <app-sidebar [role]="role()!.user_metadata!.role"></app-sidebar>
+  } @if(role()?.user_metadata?.role){
+  <div class="card-container">
+    @for ( concert of concerts(); track $index ) {
+    <app-card
+      [concert]="concert"
+      [role]="role()!.user_metadata!.role"
+      (concertToDelete)="setConcertToDelete($event)"
+      (concertInfo)="setConcertInfo($event)"
+    >
+    </app-card>
+    } @empty {
+    <p>Keine Konzerte verfügbar</p>
+    }
+  </div>
+  } @if (isSmartphone() && role()?.user_metadata?.role) {
+  <app-bottom-navbar [role]="role()!.user_metadata!.role"></app-bottom-navbar>
+  }
+</div>
+
+@if(concertToDelete()){
+<div
+  class="modal fade"
+  id="delConcertModal"
+  tabindex="-1"
+  aria-labelledby="delConcertLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delConcertLabel">Konzert Löschen</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Sind Sie sicher, dass Sie das Konzert
+          <strong>{{ concertToDelete()!.name }}</strong> löschen möchten?
+        </p>
+        <p class="text-danger">
+          Diese Aktion kann nicht rückgängig gemacht werden.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Abbrechen
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="deleteConcert()"
+        >
+          Konzert Löschen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+<div
+  class="modal fade"
+  id="infoModal"
+  tabindex="-1"
+  aria-labelledby="infoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Konzertinformationen</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Konzertname:</strong> Amazing Concert</p>
+        <p><strong>Datum:</strong> 25.01.2025</p>
+        <p><strong>Ort:</strong> Stadthalle Berlin</p>
+        <p><strong>Verfügbare Plätze:</strong> 120</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Schließen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

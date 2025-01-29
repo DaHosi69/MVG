@@ -1,0 +1,13 @@
+.seat {
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+
+  .free { background-color:#9e9e9e}
+  .reserved { background-color:#A71C51; }
+  

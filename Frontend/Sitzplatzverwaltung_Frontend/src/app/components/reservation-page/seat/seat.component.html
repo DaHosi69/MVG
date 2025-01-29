@@ -1,0 +1,8 @@
+<div class="seat">
+    @if (seat().is_occupied) {
+      <span class="seat reserved" (click)="changeSeatStatus()" ></span>
+    } @else {
+      <span class="seat free" (click)="changeSeatStatus()" ></span>
+    }
+  </div>
+  

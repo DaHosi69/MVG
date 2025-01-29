@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {LoginComponent} from "./login/login.component";
-
+import { toSignal } from '@angular/core/rxjs-interop'
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, LoginComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
+  standalone: true,
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Sitzplatzverwaltung_Frontend';
-  isLoggedIn :boolean = false;
-
-  loggedIn($event: boolean) {
-    this.isLoggedIn = $event;
-  }
 }

@@ -1,0 +1,114 @@
+<aside class="sidebar">
+  <div class="left">
+    <button>
+      <i class="fa fa-user"></i>
+    </button>
+    @if(role() === 'mvg_admin'){
+    <button
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#newConcertModal"
+    >
+      <i class="fa fa-plus"></i>
+    </button>
+    }
+    <button (click)="navigateToMVGPage()">
+      <i class="fa-solid fa-people-group"></i>
+    </button>
+    <button (click)="logout()">
+      <i class="fa fa-arrow-left" style="color: white"></i>
+    </button>
+  </div>
+</aside>
+
+<div
+  class="modal fade"
+  id="newConcertModal"
+  tabindex="-1"
+  aria-labelledby="newConcertLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newConcertLabel">
+          Neues Konzert hinzufügen
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="concertName" class="form-label">Konzertname</label>
+            <input
+              [value]="addConcertName()"
+              (input)="onInputChange($event, addConcertName.set)"
+              name="add"
+              type="text"
+              placeholder="Musterkonzert"
+              class="form-control"
+              id="concertName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="concertDate" class="form-label">Datum</label>
+            <input
+              (input)="checkFormInput()"
+              name="add"
+              type="date"
+              class="form-control"
+              id="concertDate"
+              [(ngModel)]="addConcertDate"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="concertSeats" class="form-label">Plätze Gesamt</label>
+            <input
+              (input)="checkFormInput()"
+              name="add"
+              type="number"
+              min="1"
+              value="1"
+              step="10"
+              class="form-control"
+              id="concertSeats"
+              [(ngModel)]="addTotalSeats"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="concertRows" class="form-label">Sitzreihen</label>
+            <input
+              (input)="checkFormInput()"
+              name="add"
+              type="number"
+              min="1"
+              value="1"
+              class="form-control"
+              id="concertRows"
+              [(ngModel)]="addSeatRows"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Abbrechen
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+          (click)="addConcertWithSeats()"
+          [disabled]="!isInputValid()"
+        >
+          Konzert erstellen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

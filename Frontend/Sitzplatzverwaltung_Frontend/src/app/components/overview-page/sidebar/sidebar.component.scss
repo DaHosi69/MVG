@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  --color-primary: linear-gradient(-45deg, #8f083a, #A71C51);
+  position: fixed;
+  overflow: hidden;
+  top: 24px;
+  left: 24px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 80px;
+  border-radius: 18px;
+  transition: width 0.4s;
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left {
+  z-index: 1;
+  left: 0;
+  width: 80px;
+  background: linear-gradient(-45deg, #A71C51, #FF146E);
+}
+
+.sidebar button {
+  border: 0;
+  background: linear-gradient(-45deg, #8f083a, #A71C51);
+  font-size: 20px;
+  color: inherit;
+  border-radius: 8px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.left button {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  display: grid;
+  place-items: center;
+  margin-top: 18px;
+}
+
+.sidebar > .left > button:hover {
+  background: linear-gradient(-45deg, #ae0846, #cd2263);
+}
+
+.sidebar > .left > button:active {
+  background: linear-gradient(-45deg, #ba3c6a, #c02c65);
+}
+
+.left > button {
+  background: var(--color-primary);
+  color: #f9f9f9;
+}
+
+.left button:last-of-type {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px; 
+    left: 12px; 
+    top: 12px;
+    bottom: 12px;
+  }
+
+  .left {
+    width: 60px; 
+  }
+
+  .left button {
+    width: 36px; 
+    height: 36px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+  }
+
+  .sidebar > .left > button:hover {
+    background: linear-gradient(-45deg, #b60b4c, #d23669);
+  }
+
+  .sidebar > .left > button:active {
+    background: linear-gradient(-45deg, #c03b6b, #d64573);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px; 
+  }
+
+  .left {
+    width: 50px;
+  }
+
+  .left button {
+    width: 32px; 
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; 
+  }
+
+  .left button:last-of-type {
+    margin-bottom: 15px;
+  }
+}

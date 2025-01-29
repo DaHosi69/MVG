@@ -1,0 +1,63 @@
+<div class="custom-card">
+  <div class="top">
+    <div class="card-heading">
+      <h3>{{ concert().name }}</h3>
+      <p>
+        {{ concert().date | date : "dd.MM.YY" }}
+        {{ "(" + getDayOfWeek(concert().date) + ")" }}
+      </p>
+    </div>
+    @if (role() === 'mvg_admin') {
+    <div>
+      <button
+        type="button"
+        class="btnDelete"
+        (click)="updateConcertToDelete()"
+        data-bs-toggle="modal"
+        data-bs-target="#delConcertModal"
+      >
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
+  } @else {
+    <div>
+      <button
+        type="button"
+        class="btnInfo"
+        (click)="updateConcertInfo()"
+        data-bs-toggle="modal"
+        data-bs-target="#infoModal"
+      >
+      <i class="fa-solid fa-info"></i>
+      </button>
+    </div>
+  }
+  </div>
+  <div class="middle">
+    <div class="seat-container">
+      <div class="seatDesc">
+        <p>Plätze gesamt</p>
+        <p>Belegt</p>
+      </div>
+      <div class="seatNumbers">
+        <p>{{ concert().total_seats }}</p>
+        <p>{{ occupiedSeats() }}</p>
+      </div>
+    </div>
+    <div class="range-container">
+      <progress
+        id="progress-bar"
+        [value]="occupiedSeats()"
+        [max]="concert().total_seats"
+      ></progress>
+      <span id="progress-value">
+        {{ Math.floor((occupiedSeats() / concert().total_seats) * 100) }}%
+      </span>
+    </div>
+  </div>
+  <div class="bottom">
+    <button class="btnEdit" (click)="viewSeats()">
+      <i class="fa fa-pencil"></i> Platzauswahl
+    </button>
+  </div>
+</div>

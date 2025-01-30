@@ -1,0 +1,114 @@
+.construction-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #333;
+  }
+  
+  .construction-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  .construction-animation {
+    position: relative;
+    margin: 2rem 0;
+  }
+  
+  .construction-worker {
+    font-size: 4rem;
+    animation: swing 1.5s infinite ease-in-out;
+    transform-origin: bottom center;
+  }
+  
+  .pickaxe {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation: dig 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes swing {
+    0%, 100% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+  }
+  
+  @keyframes dig {
+    0%, 100% {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    50% {
+      transform: translate(-50%, -30%) rotate(-30deg);
+    }
+  }
+  
+  /* Stil für den Zurück-Button */
+  .back-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  .back-button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  
+    .construction-worker {
+      font-size: 3rem;
+    }
+  
+    .pickaxe {
+      font-size: 1.5rem;
+    }
+  
+    .back-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  }

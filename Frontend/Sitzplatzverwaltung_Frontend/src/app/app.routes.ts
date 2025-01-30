@@ -5,11 +5,13 @@ import { ReservationsComponent } from './components/reservation-page/reservation
 import { reservationsResolver } from './components/reservation-page/resolvers/reservations.resolver';
 import { AuthGuard } from '../services/auth.guard';
 import { WrongPathComponent } from './components/wrong-path/wrong-path.component';
+import { WorkingOnItPageComponent } from './components/working-on-it-page/working-on-it-page.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'overview', component: OverviewComponent, canActivate: [AuthGuard]},
   {path: 'reservations/:id', component: ReservationsComponent, resolve: { seats: reservationsResolver }, canActivate: [AuthGuard] },
-  {path: '**', component: WrongPathComponent}
+  {path: 'workingonit', component: WorkingOnItPageComponent, canActivate: [AuthGuard]},
+  {path: '**', component: WrongPathComponent, canActivate: [AuthGuard]}
 ];

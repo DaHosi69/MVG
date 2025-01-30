@@ -45,7 +45,8 @@ export class CardComponent implements OnInit{
   }
 
   viewSeats() {
-    this.router.navigateByUrl(`/reservations/${this.concert().id}`);
+    //this.router.navigateByUrl(`/reservations/${this.concert().id}`);
+    this.router.navigate(['workingonit']);
   }
 
   updateConcertToDelete() {

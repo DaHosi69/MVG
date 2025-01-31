@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #31055b 0%, #1b09a3 100%);
+    background: linear-gradient(-45deg, #830537, #420b1e);
     font-family: 'Arial', sans-serif;
     text-align: center;
     color: #333;
@@ -70,7 +70,7 @@
   
   /* Stil für den Zurück-Button */
   .back-button {
-    background-color: #3498db;
+    background-color:  #a71c51;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -81,7 +81,7 @@
   }
   
   .back-button:hover {
-    background-color: #2980b9;
+    background-color:  #e01965;
     transform: scale(1.05);
   }
   

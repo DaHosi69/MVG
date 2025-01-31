@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+  </head>
+  <body>
+    @if(user()){
+<div class="profile-container">
+    <!-- Benutzerinfo Section -->
+    <section class="user-section">
+      <h2>Angemeldeter Benutzer</h2>
+      <div class="user-card">
+        <div class="user-avatar">{{getUserInitials(user()!.email) }}</div>
+        <div class="user-details">
+          <h3>{{ getUserName(user()!.email) }}</h3>
+          <p>{{ user()?.email }}</p>
+          <p>Angemeldet seit: {{ user()?.last_sign_in_at | date:'dd.MM.yyyy, HH:mm:ss' : 'Europe/Berlin' }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Rechte Section -->
+    <section class="permissions-section">
+      <h2>Ihre Berechtigungen</h2>
+      <div class="permissions-grid">
+        @for (permission of permissions; track $index) {
+        <div class="permission-item">
+          <div class="permission-icon">{{ permission.emoji }}</div>
+          <h4>{{ permission.title }}</h4>
+          <p>{{ permission.description }}</p>
+        </div>
+    }
+      </div>
+    </section>
+  
+    <!-- Dashboard Section -->
+     @if(hasDashboardAccess){
+    <section class="dashboard-section">
+      <h2>Reservierungs-Dashboard</h2>
+      
+      <!-- Bar Chart -->
+      <div class="chart-container">
+        <div class="bar-chart">
+            @for (hour of reservationsByHour; track $index) {
+          <div class="bar-container">
+            <div class="bar" [style.height]="hour.value * 5 + 'px'"></div>
+            <span class="bar-label">{{ hour.time }}</span>
+          </div>
+        }
+        </div>
+        <h4>Reservierungen pro Stunde</h4>
+      </div>
+    
+  <!-- Donut Chart -->
+<div class="chart-container">
+    <div class="donut-chart">
+      <svg width="200" height="200">
+        <!-- Active Reservations -->
+        <circle cx="100" cy="100" r="80" 
+                [attr.stroke-dasharray]="getDonutSegment(activeReservations)"
+                stroke="#4CAF50"
+                stroke-width="20" 
+                fill="transparent"
+                transform="rotate(-90 100 100)"/>
+  
+        <!-- Completed Reservations -->
+        <circle cx="100" cy="100" r="80" 
+                [attr.stroke-dasharray]="getDonutSegment(completedReservations)"
+                stroke="#2196F3"
+                stroke-width="20" 
+                fill="transparent"
+                [attr.transform]="'rotate(' + getRotationAngle('completed') + ' 100 100)'"/>
+  
+        <!-- Cancelled Reservations -->
+        <circle cx="100" cy="100" r="80" 
+                [attr.stroke-dasharray]="getDonutSegment(cancelledReservations)"
+                stroke="#F44336"
+                stroke-width="20" 
+                fill="transparent"
+                [attr.transform]="'rotate(' + getRotationAngle('cancelled') + ' 100 100)'"/>
+  
+        <text x="50%" y="50%" text-anchor="middle" dy=".3em" class="donut-text">
+          {{ totalReservations }}
+        </text>
+      </svg>
+    </div>
+    <!-- ... -->
+  </div>
+    </section>
+}
+</div>
+    }
+</body>
+</html>

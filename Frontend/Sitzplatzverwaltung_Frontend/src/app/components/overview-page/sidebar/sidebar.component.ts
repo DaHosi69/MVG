@@ -70,4 +70,8 @@ role = input.required<string>();
   navigateToMVGPage(){
     window.location.href = 'https://1491662368.jimdoweb.com';
   }
+
+  profileClicked() {
+    this.router.navigate(['userprofileinfo']);
+  }
 }

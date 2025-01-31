@@ -1,7 +1,7 @@
 <div class="bottom-navbar">
-  <a href="#" class="nav-button">
+  <button class="nav-button" (click)="profileClicked()">
     <i class="fa fa-user"></i>
-  </a>
+  </button>
   @if(role() === 'mvg_admin'){
   <button
     class="nav-button"

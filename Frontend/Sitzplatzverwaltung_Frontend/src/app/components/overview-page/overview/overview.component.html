@@ -85,10 +85,9 @@
         ></button>
       </div>
       <div class="modal-body">
-        <p><strong>Konzertname:</strong> Amazing Concert</p>
-        <p><strong>Datum:</strong> 25.01.2025</p>
-        <p><strong>Ort:</strong> Stadthalle Berlin</p>
-        <p><strong>Verfügbare Plätze:</strong> 120</p>
+        <p><strong>Konzertname:</strong> {{concertInfo()?.name}}</p>
+        <p><strong>Datum:</strong> {{concertInfo()?.date}}</p>
+        <p><strong>Verfügbare Plätze:</strong> {{concertInfoOccupiedSeats()}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

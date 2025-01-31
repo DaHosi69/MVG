@@ -21,6 +21,7 @@ export class OverviewComponent implements OnInit {
   concerts = signal<ConcertDto[]>([]);
   concertToDelete = signal<ConcertDto | null>(null);
   concertInfo = signal<ConcertDto | null>(null);
+  concertInfoOccupiedSeats = signal<number>(0);
   isSmartphone = signal(false);
   role = computedAsync( () => from(this.supabaseService.getCurrentUser()) as Observable<UserDto>);
  
@@ -51,6 +52,15 @@ export class OverviewComponent implements OnInit {
 
   setConcertInfo(concert: ConcertDto){
     this.concertInfo.set(concert);
+    this.fetchOccupiedSeats();
     console.log('in SetConcertInfo');
+  }
+
+  async fetchOccupiedSeats() {
+    try {
+       this.concertInfoOccupiedSeats.set(await this.supabaseService.getOccupiedSeatsCount(this.concertInfo()!.id));
+    } catch (error) {
+      console.error('Error fetching occupied seats:', error);
+    }
   }
 }

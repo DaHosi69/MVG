@@ -1,11 +1,16 @@
 .seat {
     display: inline-block;
+    justify-content: center;
+    align-items: center;
     width: 5vw;
     height: 5vw;
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 25px;
+    max-height: 25px;
     border-radius: 3px;
-    margin-right: 5px;
+    margin-right: 2px;
+  }
+  span{
+    font-size: 10px;
   }
 
   .free { background-color:#9e9e9e}

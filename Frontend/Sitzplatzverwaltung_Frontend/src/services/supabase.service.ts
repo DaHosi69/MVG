@@ -3,6 +3,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from './../environments/environment';
 import {Observable} from "rxjs";
 import { SeatDto } from '../models/SeatDto';
+import { Seat } from '../models/Seat';
 import { UserDto } from '../models/UserDto';
 
 @Injectable({
@@ -16,8 +17,6 @@ export class SupabaseService {
     const { data, error } = await this.supabase.auth.getUser();
     if (!error && data.user) {
       this.currentUser = data.user as UserDto;
-      console.log(data.user);
-      
     } else {
       this.currentUser = null;
     }
@@ -40,6 +39,8 @@ export class SupabaseService {
   
   async getCurrentUser() {
     const { data, error } = await this.supabase.auth.getUser();
+    console.log(data.user);
+    
     if (error) {
       throw new Error(error.message);
     }
@@ -60,8 +61,6 @@ export class SupabaseService {
       console.error('Error updating seats:', error);
       throw error;
     }
-
-    console.log('Successfully updated Seats');
   }
 
   async getSeats(concertId: number) {
@@ -87,7 +86,7 @@ export class SupabaseService {
     if (error) throw error;
     return data;
   }
-
+  
   async createConcertWithSeats(
     name: string,
     date: string,
@@ -101,8 +100,8 @@ export class SupabaseService {
           {
             name: name,
             date: date,
-            total_seats: totalSeats,
-            seat_rows: seatRows,
+            total_seats: 201,
+            seat_rows: 13,
           },
         ])
         .select(); 
@@ -113,33 +112,32 @@ export class SupabaseService {
       }
   
       const concertId = concert[0].id; 
+      const seatDistribution = [8, 17, 9, 18, 16, 17, 16, 17, 18, 19, 18, 16, 12];
   
-      const seats = [];
-      const seatsPerRow = Math.ceil(totalSeats / seatRows);
-      for (let row = 1; row <= seatRows; row++) {
-        for (let seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++) {
+      const seats: Seat[] = [];
+  
+      seatDistribution.forEach((seatsInRow, rowIndex) => {
+        const rowNumber = rowIndex + 1;
+        for (let seatNumber = 1; seatNumber <= seatsInRow; seatNumber++) {
           seats.push({
             concert_id: concertId,
-            row_number: row,
+            row_number: rowNumber,
             seat_number: seatNumber,
             is_occupied: false,
           });
         }
-      }
-  
+      });
       const { error: seatError } = await this.supabase.from('seats').insert(seats);
   
       if (seatError) {
         console.error('Error creating seats:', seatError.message);
         throw new Error(seatError.message);
       }
-  
-      console.log('Concert and seats created successfully!');
     } catch (error) {
       console.error('Unexpected error:', error);
     }
   }
-  
+
   getOccupiedSeatsCount = async (concertId: number): Promise<number> => {
     const { count, error } = await this.supabase
       .from('seats')
@@ -175,8 +173,6 @@ export class SupabaseService {
         console.error('Error deleting concert:', concertError.message);
         throw new Error(concertError.message);
       }
-  
-      console.log(`Concert with ID ${concertId} deleted successfully!`);
     } catch (error) {
       console.error('Unexpected error:', error);
     }

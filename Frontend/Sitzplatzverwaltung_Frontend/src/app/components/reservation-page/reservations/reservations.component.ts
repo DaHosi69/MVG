@@ -4,10 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { SeatDto } from '../../../../models/SeatDto';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { SupabaseService } from '../../../../services/supabase.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-reservations',
-  imports: [SeatComponent, NavbarComponent],
+  imports: [SeatComponent, NavbarComponent, NgClass],
   templateUrl: './reservations.component.html',
   styleUrl: './reservations.component.scss'
 })

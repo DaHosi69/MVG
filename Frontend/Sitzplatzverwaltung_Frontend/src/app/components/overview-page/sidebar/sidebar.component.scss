@@ -32,7 +32,8 @@
   z-index: 1;
   left: 0;
   width: 80px;
-  background: linear-gradient(-45deg, #A71C51, #FF146E);
+  background: rgb(250,0,255);
+  background: radial-gradient(circle, rgba(250,0,255,1) 0%, rgba(218,0,222,1) 26%, rgba(67,0,68,1) 100%, rgba(134,0,136,1) 100%, rgba(80,0,82,1) 100%, rgba(0,0,0,1) 100%);
 }
 
 .sidebar button {

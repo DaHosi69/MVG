@@ -1,12 +1,100 @@
 .reservierung-container {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     margin-top: 10px;
   }
+
+  body, html{
+    overflow: auto !important;
+  }
   
+  .seat-row.row-1 {
+    margin-left: 50%;
+  }
+  .seat-row.row-2{
+    margin-right: 30%;
+    margin-left: 30%;
+  }
+
+  .seat.row-2-seat-10{
+    margin-right: 50px;
+  }
+  .seat.row-2-seat-11{
+    margin-left: 40px;
+  }
+
+  .seat-row.row-3 {
+    margin-right: 45%;
+  }
+
+  .seat.row-4-seat-10{
+    margin-right: 60px;
+  }
+
+  .seat-row.row-5 {
+    margin-right: 0%;
+  }
+  .seat.row-5-seat-9{
+    margin-right: 50px;
+  }
+  .seat.row-5-seat-10{
+    margin-left: 50px;
+  }
+
+  .seat.row-6-seat-10{
+    margin-right: 90px;
+  }
+
+  .seat.row-7-seat-9{
+    margin-right: 80px;
+  }
+  .seat.row-7-seat-10{
+    margin-left: 40px;
+  }
+  .seat-row.row-7 {
+    margin-left: 4%;
+  }
+
+  .seat.row-8-seat-10{
+    margin-right: 90px;
+  }
+
+  .seat.row-9-seat-10{
+    margin-right: 60px;
+  }
+  .seat-row.row-9 {
+    margin-left: 4%;
+  }
+
+  .seat.row-10-seat-10{
+    margin-right: 40px;
+  }
+
+  .seat-row.row-11 {
+    margin-left: 4%;
+  }
+  .seat.row-11-seat-9{
+    margin-right: 70px;
+  }
+
+  .seat.row-12-seat-10{
+    margin-right: 120px;
+  }
+
+  .seat.row-13-seat-9{
+    margin-right: 240px;
+  }
+  .seat-row.row-13 {
+    margin-left: 2%;
+  }
+
   .screen {
     margin: 20px auto;
-    width: 40%;
+    width: 90%;
     height: 10px;
     background: #ddd;
     border-radius: 5px;
@@ -20,17 +108,18 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    border: 1px solid #888;
+    width: 650px;
   }
   
   .seat-row {
     display: flex;
     justify-content: center; 
-    gap: 10px; 
     margin-bottom: 15px; 
   }
 
   .row-display {
-  width: 30px; /* Adjust as needed */
+  width: 30px; 
   text-align: center;
   font-weight: bold;
   color: #555;

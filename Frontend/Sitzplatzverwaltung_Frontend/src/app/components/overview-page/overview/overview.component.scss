@@ -8,7 +8,8 @@ app-card {
   font-family: Inter, sans-serif;
   height: 100%;
   width: 100%;
-  background: linear-gradient(-45deg, #830537, #420b1e);
+  background: rgb(58,32,60);
+  background: linear-gradient(90deg, rgba(58,32,60,1) 0%, rgba(233,0,255,1) 50%, rgba(80,26,83,1) 100%);
 }
 
 .card-container {
@@ -24,7 +25,8 @@ app-card {
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 5px 15px;
   width: 89%;
-  background-color: rgb(243, 238, 238);
+   background: rgba(255, 255, 255, 0.5); /* Transparent background */
+  backdrop-filter: blur(10px); /* Blurs only the background */
   overflow: auto;
   clip-path: inset(0 round 10px);
 }

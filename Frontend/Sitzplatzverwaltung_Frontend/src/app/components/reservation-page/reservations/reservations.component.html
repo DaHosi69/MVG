@@ -1,21 +1,32 @@
-<app-navbar></app-navbar>
-<div class="reservierung-container">
-    <div class="seating-area">
-      @for (row of seatRows(); track row[0].row_number) {
-        <div class="seat-row">
-          <div class="row-display">{{ row[0].row_number }}</div>
+<!DOCTYPE html>
+<html lang="de">
+  <head> </head>
+  <body>
+    <app-navbar></app-navbar>
+    <div class="reservierung-container">
+      <div class="seating-area">
+        @for (row of seatRows(); track $index) {
+        <div class="seat-row" [ngClass]="'row-' + (13 - $index)">
+          <!--<div class="row-display">{{ row[0].row_number }}</div>-->
           @for (seat of row; track seat.id) {
-            <app-seat [seat]="seat" (seatChanged)="seatChanged($event)"></app-seat>
+          <app-seat
+            class="seat"
+            [seat]="seat"
+            (seatChanged)="seatChanged($event)"
+            [ngClass]="
+              'row-' + row[0].row_number + '-' + 'seat-' + seat.seat_number
+            "
+          ></app-seat>
           }
-          
-          <div class="row-display">{{ row[0].row_number }}</div>
+          <!--<div class="row-display">{{ row[0].row_number }}</div>-->
         </div>
-      }
+        }
+        <div class="screen"></div>
+      </div>
+      <div class="legend">
+        <div><span class="legend-box free"></span>frei</div>
+        <div><span class="legend-box selected"></span>belegt</div>
+      </div>
     </div>
-    <div class="screen"></div>
-    <div class="legend">
-      <div><span class="legend-box free"></span>frei</div>
-      <div><span class="legend-box selected"></span>belegt</div>
-    </div>
-  </div>
- 
+  </body>
+</html>

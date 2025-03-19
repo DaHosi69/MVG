@@ -29,7 +29,6 @@ export class OverviewComponent implements OnInit {
     this.supabaseService.getConcerts().then((x) => this.concerts.set(x));
     this.isSmartphone.set(window.innerWidth <= 480);
     await this.supabaseService.loadCurrentUser();
-    console.log(this.supabaseService.currentUser?.user_metadata.role);
   }
 
   isAdmin(): boolean {
@@ -39,7 +38,6 @@ export class OverviewComponent implements OnInit {
   async deleteConcert(): Promise<void> {
     try {
       await this.supabaseService.deleteConcert(this.concertToDelete()!.id);
-      console.log('Concert deleted successfully!');
     } catch (error) {
       console.error('Error deleting concert:', error);
     }
@@ -53,7 +51,6 @@ export class OverviewComponent implements OnInit {
   setConcertInfo(concert: ConcertDto){
     this.concertInfo.set(concert);
     this.fetchOccupiedSeats();
-    console.log('in SetConcertInfo');
   }
 
   async fetchOccupiedSeats() {

@@ -48,8 +48,7 @@ role = input.required<string>();
     if (this.addConcertName() !== '' 
     && this.addConcertDate() !== '' 
     && this.addTotalSeats() > 0 
-    && this.addSeatRows() > 0 
-    && this.addTotalSeats() % this.addSeatRows() === 0)return true;
+    && this.addSeatRows() > 0)return true;
     return false;
   }
 

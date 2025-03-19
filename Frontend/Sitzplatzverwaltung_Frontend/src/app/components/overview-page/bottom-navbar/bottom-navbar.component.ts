@@ -32,7 +32,6 @@ role = input.required<string>();
         this.addTotalSeats(),
         this.addSeatRows()  
       );
-      console.log('Concert and seats added successfully!');
     } catch (error) {
       console.error('Error adding concert and seats:', error);
     }

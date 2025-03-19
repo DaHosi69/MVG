@@ -1,8 +1,8 @@
 <div class="seat">
     @if (seat().is_occupied) {
-      <span class="seat reserved" (click)="changeSeatStatus()" ></span>
+      <span class="seat reserved" (click)="changeSeatStatus()" ><label>{{seat().row_number}}/{{seat().seat_number}}</label></span>
     } @else {
-      <span class="seat free" (click)="changeSeatStatus()" ></span>
+      <span class="seat free" (click)="changeSeatStatus()" ><label> </label></span>
     }
   </div>
   

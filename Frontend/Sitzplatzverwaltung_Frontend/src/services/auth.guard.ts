@@ -13,7 +13,7 @@ supabaseService = inject(SupabaseService);
     try {
       const user = await this.supabaseService.getCurrentUser();
       return !!user; 
-    } catch (error) {
+    } catch (error) {  
       console.error('AuthGuard: User is not authenticated. Redirecting to /login');
       this.router.navigate(['/login']);
       return false; 
